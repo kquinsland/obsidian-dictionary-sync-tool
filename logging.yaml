@@ -1,0 +1,52 @@
+# See: https://docs.python.org/3/library/logging.config.html#logging.config.dictConfig
+# See: https://docs.python.org/3/library/logging.config.html#dictionary-schema-details
+# See: https://stackoverflow.com/questions/7507825/where-is-a-complete-example-of-logging-config-dictconfig
+##
+version: 1
+# delete any programmatic configuration
+disable_existing_loggers: True
+
+formatters:
+  default:
+    # Name will be the logger name
+    format: "%(asctime)s %(name)-12s %(levelname)-8s %(message)s"
+    # Use iso8601
+    datefmt: "%Y-%m-%dT%H:%M:%S%z"
+
+  brief:
+    format: "%(message)s"
+
+# dictConfig gets _angry_ if you have anything that resolves to NoneType
+#filters:
+
+handlers:
+  default:
+    level: "DEBUG"
+    formatter: default
+    class: "logging.StreamHandler"
+    # Default is stderr
+    stream: "ext://sys.stdout"
+
+  file:
+    # See: https://docs.python.org/3/library/logging.handlers.html#logging.handlers.RotatingFileHandler
+    class: logging.handlers.RotatingFileHandler
+    formatter: default
+    # Will throw error if file does not exist
+    # Currently not using it for anything but may be useful for logging before/after state of dictionaries for recovery purposes?
+    filename: logs/dict-sync.log
+    maxBytes: 1024
+    backupCount: 3
+
+loggers:
+  # Root, could also be defined with the root: key in the root of this file
+  "":
+    handlers: ["default"]
+    level: "DEBUG"
+    propagate: False
+
+  # Useful for PoC/Cli
+  "__main__":
+    handlers:
+      - default
+    level: "DEBUG"
+    propagate: False

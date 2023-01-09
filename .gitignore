@@ -1,0 +1,12 @@
+# VirtualEnv (if using `venv`; Poetry venv is kept out of repo root)
+.virtualenv/*
+.venv
+
+# PyCache
+**/__pycache__/*
+
+# Log files
+*.log
+
+# Master Dictionary
+master_dictionary.txt

@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "dict-sync"
+version = "0.1.0"
+description = "Quick and dirty Obsidian spell check sync tool"
+# Open issue on GH repo if you need to get in touch
+authors = ["kquinsland"]
+readme = "readme.md"
+
+
+[tool.poetry.dependencies]
+# Initially written for python 3.10. May work below/above that.
+python = "^3.10"
+
+# Log config
+pyyaml = "^6.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
