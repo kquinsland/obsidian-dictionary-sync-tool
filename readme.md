@@ -1,3 +1,10 @@
+# Archive/EoL/Deprecated.
+
+Please see/use the rust re-write [here](https://github.com/kquinsland/obsidian-dict-sync)
+
+
+-----
+
 # Obsidian Dictionary Sync tool
 
 I use obsidian on both windows and linux machines.
